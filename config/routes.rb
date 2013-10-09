@@ -1,6 +1,8 @@
 LightItUp::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  get 'welcome/index'
+  root "welcome#index"
 
   resources :users, :slideshows, :slides
 
@@ -8,8 +10,10 @@ LightItUp::Application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
-  get 'signup' => 'users#new'
+  get 'signup' => 'users#create'
   get 'profile/:id' => 'users#show'
+
+
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
@@ -48,7 +52,7 @@ LightItUp::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
