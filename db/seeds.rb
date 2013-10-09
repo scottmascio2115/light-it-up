@@ -15,6 +15,7 @@ end
                    user_id: user.id)
 end
 
+
 Slideshow.all.each do |slideshow|
   rand(3..7).times do
 
@@ -31,3 +32,11 @@ Slideshow.all.each do |slideshow|
                  title: Faker::Lorem.sentence(word_count = 3, supplemental = false, random_words_to_add = 10))
   end
 end
+
+element_types = [ {name: "Title",
+                   before_tag: "<h1>",
+                   after_tag: "</h1>"},
+                   {name: "Image",
+                   before_tag: "<img>",
+                   after_tag: "</img>"}
+                ]
