@@ -25,8 +25,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.id == session[:user_id]
       @user.destroy
+      session.clear
     end
-    redirect_to welcome_index_path
+    redirect_to root_url
 
   end
 
