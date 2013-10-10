@@ -22,6 +22,12 @@ class UsersController < ApplicationController
 
   def destroy
 
+    @user = User.find(params[:id])
+    if @user.id == session[:user_id]
+      @user.destroy
+    end
+    redirect_to welcome_index_path
+
   end
 
   def update
