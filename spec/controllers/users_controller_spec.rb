@@ -3,6 +3,9 @@ describe UsersController do
 
   before(:each) do
     @user = User.create(:email => "scott@gmail.com",:password => "test", :password_confirmation => "test" )
+
+    controller.stub(:current_user).and_return(@user)
+
   end
 
   describe '#create' do
