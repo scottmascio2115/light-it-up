@@ -45,4 +45,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'debugger', group: [:development, :test]
 
 # Use faker
-gem 'faker', group: [:development]
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'faker'
+end
