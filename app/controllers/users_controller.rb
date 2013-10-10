@@ -32,6 +32,20 @@ class UsersController < ApplicationController
 
   def update
 
+    @user = User.find(params[:id])
+    @user.update_attributes(user_params)
+
+    redirect_to user_path(@user)
+  end
+
+  def edit
+    # if session[:user_id] && session[:user_id] == params[:id]
+       @user = User.find(params[:id])
+      render :edit
+    # else
+      #redirect_to welcome_index_path
+    # end
+
   end
 
 
