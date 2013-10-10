@@ -3,6 +3,9 @@ describe UsersController do
 
   before(:each) do
     @user = User.create(:email => "scott@gmail.com",:password => "test", :password_confirmation => "test" )
+
+    controller.stub(:current_user).and_return(@user)
+
   end
 
   describe '#create' do
@@ -73,7 +76,7 @@ end
   describe '#edit' do
 
     it 'should render the edit page' do
-      get :edit, :id => @user
+      get :edit, :id => @user.id
 
       response.should render_template(:edit)
     end
