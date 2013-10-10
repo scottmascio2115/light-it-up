@@ -3,6 +3,8 @@
 
 <%= link_to 'Homepage', root_path %>
 
+<%= link_to 'Create new slideshow', new_slideshow_path %>
+
 
 <%= link_to "Update Account Info", edit_user_path(@user) %>
- <%= link_to 'Delete Account', user_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Delete Account', user_path, method: :delete, data: { confirm: 'Are you sure?' } %>
