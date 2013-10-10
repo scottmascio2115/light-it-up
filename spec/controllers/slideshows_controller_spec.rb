@@ -2,6 +2,24 @@ require 'spec_helper'
 
 describe SlideshowsController do
 
+  before do
+    10.times do
+      Slideshow.create
+    end
+
+    @user = User.create(email: "user1@user.com", password: "password", password_confirmation: "password")
+    controller.stub(:current_user).and_return(@user)
+  end
+
+  describe 'index' do
+
+    it "should return one variable with all slideshows" do
+      get 'index'
+      expect(assigns(:slideshows).length).to eq(10)
+    end
+
+  end
+
   describe '#new' do
 
     before do
