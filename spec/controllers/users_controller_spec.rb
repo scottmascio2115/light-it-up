@@ -76,7 +76,7 @@ end
   describe '#edit' do
 
     it 'should render the edit page' do
-      get :edit, :id => @user
+      get :edit, :id => @user.id
 
       response.should render_template(:edit)
     end
