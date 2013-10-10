@@ -10,7 +10,7 @@ LightItUp::Application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
-  get 'signup' => 'users#create'
+  get 'signup' => 'users#new'
   get 'profile/:id' => 'users#show'
 
 
