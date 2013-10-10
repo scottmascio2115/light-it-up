@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
 
-  def index
-
-  end
-
   def create
     @user = User.new(user_params)
     if @user.save
@@ -14,7 +10,6 @@ class UsersController < ApplicationController
       render :new
     end
   end
-
 
   def new
 
@@ -40,13 +35,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    # if session[:user_id] && session[:user_id] == params[:id]
-       @user = User.find(params[:id])
-      render :edit
-    # else
-      #redirect_to welcome_index_path
-    # end
+      @user = User.find(params[:id])
 
+
+
+      render :edit
   end
 
 
