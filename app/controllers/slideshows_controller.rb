@@ -1,3 +1,4 @@
-class SlideController < ApplicationController
+class SlideshowsController < ApplicationController
+
+
 end
-5
