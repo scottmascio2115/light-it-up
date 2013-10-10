@@ -1,7 +1,42 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+User.destroy_all
+Slideshow.destroy_all
+Slide.destroy_all
+
+50.times do
+  User.create(email: Faker::Internet.email,
+              password: "password",
+              password_confirmation: "password")
+end
+
+5.times do
+  user = User.all.sample
+  Slideshow.create(name: Faker::Lorem.sentence(word_count = 3, supplemental = false, random_words_to_add = 3),
+                   shared: [false, true].sample,
+                   user_id: user.id)
+end
+
+
+Slideshow.all.each do |slideshow|
+  rand(3..7).times do
+
+    offset = rand(User.count)
+
+    if slideshow.shared == false
+      user_id = slideshow.user_id
+    else
+      user_id = User.first(offset: offset).id
+    end
+
+    Slide.create(slideshow_id: slideshow.id,
+                 user_id: user_id,
+                 title: Faker::Lorem.sentence(word_count = 3, supplemental = false, random_words_to_add = 10))
+  end
+end
+
+element_types = [ {name: "Title",
+                   before_tag: "<h1>",
+                   after_tag: "</h1>"},
+                   {name: "Image",
+                   before_tag: "<img>",
+                   after_tag: "</img>"}
+                ]

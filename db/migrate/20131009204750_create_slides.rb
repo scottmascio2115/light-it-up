@@ -4,7 +4,7 @@ class CreateSlides < ActiveRecord::Migration
       t.integer :slideshow_id
       t.integer :user_id
       t.string  :title
-      t.integer :page
+      t.integer :sort_order
 
       t.timestamps
     end

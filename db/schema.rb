@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20131009204815) do
     t.integer  "slideshow_id"
     t.integer  "user_id"
     t.string   "title"
-    t.integer  "page"
+    t.integer  "sort_order"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20131009204815) do
   create_table "slideshows", force: true do |t|
     t.integer  "user_id"
     t.string   "name"
-    t.boolean  "public",     default: false
+    t.boolean  "shared",     default: false
     t.integer  "px_width",   default: 1280
     t.integer  "px_height",  default: 720
     t.datetime "created_at"
