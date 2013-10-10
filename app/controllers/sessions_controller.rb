@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
 
+
+ skip_before_filter :require_login #, :id_check
+
+
   def create
 
     user = User.find_by(email: params[:email])

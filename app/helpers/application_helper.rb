@@ -5,12 +5,12 @@ module ApplicationHelper
     raw file.read
   end
 
-  def session?
-    session[:user_id] != nil
-  end
+  # def session?
+  #   session[:user_id] != nil
+  # end
 
-  def session_user
-    User.find(session[:user_id]) if session?
-  end
+  # def session_user
+  #   User.find(session[:user_id]) if session?
+  # end
 
 end
