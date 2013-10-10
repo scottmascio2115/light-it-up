@@ -48,4 +48,5 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 group :test, :development do
   gem 'rspec-rails'
   gem 'faker'
+  gem 'capybara'
 end
