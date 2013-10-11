@@ -49,6 +49,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @slideshows = @user.slideshows
+    @shared_slideshows = Slideshow.where("shared = true")
   end
 
 
