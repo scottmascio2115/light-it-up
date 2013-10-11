@@ -10,7 +10,6 @@ describe ElementsController do
 
     it 'should access all elements' do
       elements = Element.all
-      p elements
       expect(elements).to eq Element.all
     end
 
@@ -27,14 +26,34 @@ describe ElementsController do
       element = Element.new(content: 'Not a slide')
       expect{ element.save }.to_not change(Element, :count).by(1)
     end
-    
+
   end
 
   describe '#new' do
-        
+    
+    it 'should open a new element object' do
+      element = Element.new
+      expect(element.class).to be Element      
+    end
+
+    it 'should not save an Element object' do
+      expect{ Element.new }.to_not change(Element, :count).by(1)
+    end
+
   end
 
   describe '#show' do
+
+    before do
+      element = Element.create(content: 'Hello, world!', slide_id: 1, element_type_id: 1, size: 0, coordinates: 'xxx')
+      get 'show', :id => element.id
+    end
+
+    it 'should return an element' do
+      # (expect(assigns(:element)).to be_a(Element))
+      pending "This test sucks"
+    end
+
   end
 
   describe '#edit' do
