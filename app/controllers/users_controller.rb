@@ -32,10 +32,7 @@ class UsersController < ApplicationController
   def update
 
     current_user.update_attributes!(email: user_update[:email])
-    p current_user
-    p user_params
-    p params
-    p params[:user]
+
 
     redirect_to user_path(current_user)
   end
