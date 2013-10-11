@@ -1,1 +1,7 @@
 <h1><%= @slide.title %> </h1>
+
+<h3><%= @slide.slideshow.name %></h3>
+<h3><%= @slide.slideshow.id %></h3>
+
+
+<div class="slide" style="width: <%= @slide.slideshow.px_width %>px; height: <%= @slide.slideshow.px_height %>px"></div>
