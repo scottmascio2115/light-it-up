@@ -36,7 +36,9 @@ describe "User Profile" do
       click_link 'Delete Account'
       page.should have_content 'Welcome to CromeCast Hack'
     end
+
   end
+
 end
 
 
