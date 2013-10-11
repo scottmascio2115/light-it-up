@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ElementsController do
 
   before do
-    @slide = Slide.create!(title: 'Slide 1', slideshow_id: 1, user_id: 1, sort_order: 1)
+    @slide = Slide.create!(title: 'Slide 1', slideshow_id: 1, creator_id: 1, sort_order: 1)
   end
 
   describe '#index' do
