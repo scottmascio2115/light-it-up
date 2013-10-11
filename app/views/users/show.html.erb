@@ -2,48 +2,12 @@
 
 <% unless @slideshows == nil %>
 <h3>Your slideshows</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Slideshow</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @slideshows.each do |slideshow| %>
-    <tr>
-      <td><%= link_to slideshow.name, slideshow %></td>
-      <td>
-        <%= link_to "edit_settings", edit_slideshow_path(slideshow) %>
-        <%= link_to "cast", slideshow_path(slideshow) %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'table' %>
 <% end %>
 
 <% unless @shared_slideshows == nil %>
 <h3>Shared slideshows</h3>
-<table>
-  <thead>
-    <tr>
-      <th>Slideshow</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @shared_slideshows.each do |slideshow| %>
-    <tr>
-      <td><%= link_to slideshow.name, slideshow %></td>
-      <td>
-        <%= link_to "edit settings", edit_slideshow_path(slideshow) %>
-        <%= link_to "cast", slideshow_path(slideshow) %>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'table' %>
 <% end %>
 
 
