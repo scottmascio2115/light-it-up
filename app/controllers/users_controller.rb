@@ -30,8 +30,9 @@ class UsersController < ApplicationController
 
   def update
 
-    @user = User.find(params[:id])
-    @user.update_attributes(user_params)
+    current_user.update_attributes!(email: user_update[:email])
+
+
 
     redirect_to user_path(@user)
   end
@@ -57,6 +58,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+
+  def user_update
+    params.require(:user).permit(:email)
   end
 
 end

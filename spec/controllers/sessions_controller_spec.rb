@@ -15,16 +15,12 @@ describe SessionsController do
 
     it "redirects after login" do
       post :create, { email: @user.email, password: "password" }
-      expect(response.status).to eq 302
+      expect(response.status).to redirect_to user_path(@user)
     end
 
     it "redirects to root if login invalid" do
       post :create, { email: @user.email, password: "assword" }
-      expect(response.status).to eq 302
-    end
-
-    after do
-      User.all.each { |user| user.destroy }
+      expect(response.status).to redirect_to root_url
     end
 
   end
@@ -38,10 +34,6 @@ describe SessionsController do
     it "clears the session at logout" do
       delete :destroy
       expect(session[:user_id]).to eq nil
-    end
-
-    after do
-      User.all.each { |user| user.destroy }
     end
 
   end
