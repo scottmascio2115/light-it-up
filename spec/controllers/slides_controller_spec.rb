@@ -6,12 +6,12 @@ describe SlidesController do
     @user = User.create(email: 'user2@user2.com', password: 'password', password_confirmation: 'password')
     controller.stub(:current_user).and_return(@user)
 
-    
+
     20.times do
-      Slide.create(title: "test", user_id: @user.id, slideshow_id: 1, sort_order: 1)
+      Slide.create(title: "test", creator_id: @user.id, slideshow_id: 1, sort_order: 1)
     end
 
-    @slide = Slide.create(title: 'test', slideshow_id: 1, user_id: 12345, sort_order: 1)  
+    @slide = Slide.create(title: 'test', slideshow_id: 1, creator_id: 12345, sort_order: 1)
   end
 
   describe '#index' do
@@ -22,17 +22,17 @@ describe SlidesController do
   end
 
   describe '#show' do
-    
+
     before do
       get 'show', id: @slide.id
-  	end 
-    
+  	end
+
     it 'should return an instance of slide' do
-      
+
       expect(assigns(:slide)).to be_an_instance_of(Slide)
   	end
   end
-  
+
   describe '#create' do
      it "should allow a title as an argument" do
        slide = Slide.create(title: "This is a title")
@@ -45,13 +45,13 @@ describe SlidesController do
     before do
       get 'new'
     end
-    
+
     it "should allow us to add a new slide to the database" do
       expect(assigns(:slide)).to be_an_instance_of(Slide)
     end
-    
-    it "should have a user_id" do
-      expect(@slide.user_id).to eq(12345)
+
+    it "should have a creator_id" do
+      expect(@slide.creator_id).to eq(12345)
     end
 
     it "should have a slideshow_id" do
@@ -71,9 +71,10 @@ describe SlidesController do
 
   describe '#update' do
    it 'should update slide' do
-      patch :update, id: @slide, slide: { :title => "title update" }
+      slide = Slide.create(title: "This is a title", slideshow_id: 1)
+      patch :update, id: slide, slide: { title: "title update" }
 
-      @slide.reload.title.should eq "title update"
+      slide.title.should eq "title update"
     end
   end
 

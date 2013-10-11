@@ -2,7 +2,7 @@ require 'spec_helper'
 describe UsersController do
 
   before(:each) do
-    @user = User.create(:email => "scott1@gmail.com",:password => "password", :password_confirmation => "password" )
+    @user = User.create!(:email => "scott1@gmail.com",:password => "password", :password_confirmation => "password" )
 
     controller.stub(:current_user).and_return(@user)
 

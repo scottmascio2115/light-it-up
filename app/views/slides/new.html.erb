@@ -1,0 +1,9 @@
+<%= form_for @slide do |f| %>
+
+  <%= f.label :title, "Title" %>
+  <%= f.text_field :title %>
+
+
+  <%= f.submit "Save", :disable_with => 'Saving...' %>
+
+<% end %>
