@@ -28,21 +28,13 @@ class UsersController < ApplicationController
   end
 
   def update
-
     current_user.update_attributes!(email: user_update[:email])
-
-
-
     redirect_to user_path(@user)
   end
 
   def edit
-
-      @user = User.find(params[:id])
-
-
-
-      render :edit
+    @user = User.find(params[:id])
+    render :edit
   end
 
   def show
