@@ -4,6 +4,7 @@ describe ElementsController do
 
   before do
       @slide = Slide.create!(title: 'Slide 1', slideshow_id: 1, user_id: 1, sort_order: 1)
+      controller.stub(:current_user).and_return(@slide)
     end
 
   describe '#index' do
@@ -57,6 +58,24 @@ describe ElementsController do
   end
 
   describe '#edit' do
+
+    before do
+      @element = Element.create(content: 'Hello, world!', slide_id: 1, element_type_id: 1)
+    end
+
+    it 'should allow a user to edit an element' do
+      get 'edit', id: Element.first.id
+      expect(assigns(:element)).to be_an_instance_of(Element)
+    end
+
+    it 'should throw error if trying to edit an element belonging to other user' do
+      pending "Test for editing element"
+    end
+
+    it 'should allow to edit a shared but not owned slideshow' do
+      pending "Test for editing element"
+    end
+
   end
 
   describe '#update' do
