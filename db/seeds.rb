@@ -28,7 +28,7 @@ Slideshow.all.each do |slideshow|
     end
 
     Slide.create(slideshow_id: slideshow.id,
-                 user_id: user_id,
+                 creator_id: user_id,
                  title: Faker::Lorem.sentence(word_count = 3, supplemental = false, random_words_to_add = 10))
   end
 end
