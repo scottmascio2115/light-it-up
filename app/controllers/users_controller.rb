@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  skip_before_filter :require_login, :only => [:new, :create]
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -12,6 +14,7 @@ class UsersController < ApplicationController
   end
 
   def new
+
 
   end
 
@@ -28,10 +31,13 @@ class UsersController < ApplicationController
 
   def update
 
-    @user = User.find(params[:id])
-    @user.update_attributes(user_params)
+    current_user.update_attributes!(email: user_update[:email])
+    p current_user
+    p user_params
+    p params
+    p params[:user]
 
-    redirect_to user_path(@user)
+    redirect_to user_path(current_user)
   end
 
   def edit
@@ -55,6 +61,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+
+  def user_update
+    params.require(:user).permit(:email)
   end
 
 end

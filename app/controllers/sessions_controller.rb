@@ -16,6 +16,7 @@ class SessionsController < ApplicationController
     end
   end
 
+
   def destroy
     session.clear
     flash[:notice] = 'You have successfully logged out.'
