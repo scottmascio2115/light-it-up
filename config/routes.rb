@@ -4,7 +4,7 @@ LightItUp::Application.routes.draw do
   get 'welcome/index'
   root "welcome#index"
 
-  resources :users, :slideshows, :slides
+  resources :users, :slideshows, :slides, :elements
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
