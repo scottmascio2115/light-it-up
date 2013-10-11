@@ -46,8 +46,13 @@ describe "User Profile" do
       # save_and_open_page
       click_link 'your slideshow'
       page.should have_content 'your slideshow'
-
     end
+
+    it "Can view 'shared slideshows' table partial" do
+      click_link 'shared slideshow'
+      page.should have_content 'shared slideshow'
+    end
+
   end
 
 end
