@@ -1,5 +1,14 @@
 <h3><%= @user.email.capitalize %> Your Page</h3>
 
+<% if @slideshows.any? %>
+<h3>Your slideshows</h3>
+<ul>
+  <% @slideshows.each do |slideshow| %>
+  <li> <%= link_to slideshow.name, slideshow %> </li>
+  <% end %>
+</ul>
+<% end %>
+
 
 <%= link_to 'Homepage', root_path %>
 
