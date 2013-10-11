@@ -2,17 +2,21 @@
   <thead>
     <tr>
       <th>Slideshow</th>
+      <% unless @front_page %>
       <th>Action</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
     <% @shared_or_not.each do |slideshow| %>
     <tr>
       <td><%= link_to slideshow.name, slideshow %></td>
+      <% unless @front_page %>
       <td>
         <%= link_to "edit_settings", edit_slideshow_path(slideshow) %>
         <%= link_to "cast", slideshow_path(slideshow) %>
       </td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>
