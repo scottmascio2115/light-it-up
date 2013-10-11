@@ -1,0 +1,25 @@
+.slide {
+  background-color: #ddd;
+  float: right;
+  box-shadow: 0 0 10px #bbb;
+  padding: 20px;
+  position: relative;
+  border: 3px solid #aaa;
+  display: inline-block;
+  margin: 0 0 30px 0;
+}
+
+.slide-settings {
+  position: relative;
+  float: left;
+  display: inline-block;
+
+}
+
+.slide-object {
+  position: absolute;
+  background-color: red;
+  height: 100px;
+  width: 100px;
+  box-shadow: 2px 2px 10px black;
+}
