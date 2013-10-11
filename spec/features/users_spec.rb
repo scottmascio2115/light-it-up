@@ -43,7 +43,6 @@ describe "User Profile" do
     end
 
     it "Can view 'your slideshows' table partial" do
-      # save_and_open_page
       click_link 'your slideshow'
       page.should have_content 'your slideshow'
     end
