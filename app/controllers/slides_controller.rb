@@ -60,4 +60,5 @@ class SlidesController < ApplicationController
 
   def update_params
     params.require(:slide).permit(:title, :sort_order)
+  end
 end
