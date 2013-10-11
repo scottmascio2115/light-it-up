@@ -35,9 +35,11 @@ class SlidesController < ApplicationController
   end
   
   def update
-    slide = Slide.find(params[:id])
-    slide.update_attributes()
-  
+    @slide = Slide.find(params[:id])
+    @slide.update_attributes(update_params)
+    slideshow_id = @slide.slideshow_id
+    @slideshow = Slideshow.find(slideshow_id)
+    redirect_to slideshow_path(@slideshow)
   end
 
   def destroy
@@ -55,4 +57,7 @@ class SlidesController < ApplicationController
     params.require(:slide).permit(:title, :sort_order)
   end
 
+
+  def update_params
+    params.require(:slide).permit(:title, :sort_order)
 end

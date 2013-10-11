@@ -24,7 +24,6 @@ describe SlidesController do
   describe '#show' do
     
     before do
-      # @slide = Slide.create(title: 'test', slideshow_id: 1, user_id: 12345, sort_order: 1)  
       get 'show', id: @slide.id
   	end 
     
@@ -61,13 +60,27 @@ describe SlidesController do
 
   end
 
-  # describe '#destroy' do
-  #   it 'should delete a slide' do
-  #   end
-  # end
+  describe '#edit' do
 
-  # describe '#edit' do
-  #   it 'should update a slide' do
+    it 'should render the edit page' do
+      get :edit, :id => @slide.id
+
+      response.should render_template(:edit)
+    end
+  end
+
+  describe '#update' do
+   it 'should update slide' do
+      patch :update, id: @slide, slide: { :title => "title update" }
+
+      @slide.reload.title.should eq "title update"
+    end
+  end
+
+
+  # describe '#destroy' do
+  #   it "should delete a slide" do
+  #     delete :destroy, :id => @slide.id
   #   end
   # end
 
