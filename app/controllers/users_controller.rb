@@ -6,7 +6,6 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-
       redirect_to user_path(@user)
     else
       render :new
@@ -18,7 +17,6 @@ class UsersController < ApplicationController
   end
 
   def destroy
-
     @user = User.find(params[:id])
     if @user.id == session[:user_id]
       @user.destroy
@@ -29,30 +27,29 @@ class UsersController < ApplicationController
   end
 
   def update
-
     current_user.update_attributes!(email: user_update[:email])
-
-
-
     redirect_to user_path(@user)
   end
 
   def edit
-
-      @user = User.find(params[:id])
-
-
-
-      render :edit
+    @user = User.find(params[:id])
+    render :edit
   end
-
 
   def show
     @user = User.find(params[:id])
-    @slideshows = @user.slideshows
-    @shared_slideshows = Slideshow.where("shared = true AND user_id NOT IN ( #{@user.id} )")
+    if @user
+      if params[:id].to_i != current_user.id
+        flash[:notice] = "You can view your profile only."
+        redirect_to user_path(current_user)
+      end
+      @slideshows = @user.slideshows
+      @shared_slideshows = Slideshow.where("shared = true AND user_id NOT IN ( #{@user.id} )")  
+    else
+      flash[:notice] = "You need to be logged in to view your profile" #NOT RETURNING THIS NOTICE TO USER
+      redirect_to login
+    end
   end
-
 
   private
 
