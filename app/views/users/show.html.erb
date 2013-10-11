@@ -2,11 +2,13 @@
 
 <% unless @slideshows == nil %>
 <h3>Your slideshows</h3>
+<% @shared_or_not = @slideshows %> 
 <%= render 'table' %>
 <% end %>
 
 <% unless @shared_slideshows == nil %>
 <h3>Shared slideshows</h3>
+<% @shared_or_not = @shared_slideshows %> 
 <%= render 'table' %>
 <% end %>
 

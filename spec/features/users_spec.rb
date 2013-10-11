@@ -14,7 +14,12 @@ describe "User Profile" do
 
   describe "Profile functionality" do
     before(:each) do
-      visit user_path(User.find_by_email("ex@fake.com"))
+      # visit user_path(User.find_by_email("ex@fake.com"))
+      @user = User.find_by_email("ex@fake.com")
+      @your_slideshow = Slideshow.create(name: "your slideshow",user_id: @user.id, shared: false)
+      @another_user = User.create(email:"mark@dev.com", password: "password", password_confirmation: "password")
+      @shared_slideshow = Slideshow.create(name: "shared slideshow",user_id: @another_user.id, shared: true)
+      visit user_path(@user)
     end
 
     it "Can get to new slideshow page" do
@@ -37,6 +42,12 @@ describe "User Profile" do
       page.should have_content 'Welcome to CromeCast Hack'
     end
 
+    it "Can view 'your slideshows' table partial" do
+      # save_and_open_page
+      click_link 'your slideshow'
+      page.should have_content 'your slideshow'
+
+    end
   end
 
 end
