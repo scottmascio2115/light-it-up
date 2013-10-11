@@ -6,7 +6,7 @@ class ElementsController < ApplicationController
 
   def create
     @element = Element.new(create_params)
-    
+    redirect_to slide_path(@slide)
   end
 
   def new
