@@ -1,0 +1,22 @@
+<h1>Edit slideshow</h1>
+
+<%= form_for @slideshow, method: :patch do |f| %>
+
+  <%= f.label :name %><br />
+  <%= f.text_field :name %>
+  <%= f.label :shared %>
+  <%= f.check_box :shared %>
+
+  <%= f.submit "Update", :disable_with => 'Update...' %>
+
+<% end %>
+
+<% if flash.any? %>
+<div class="error">
+  <% flash.each do |key, value| %>
+  <%= content_tag(:div, value, :class => "flash #{key}") %>
+<% end %>
+
+
+</div>
+<% end %>

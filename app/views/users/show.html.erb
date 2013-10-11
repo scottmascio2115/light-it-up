@@ -2,11 +2,25 @@
 
 <% unless @slideshows == nil %>
 <h3>Your slideshows</h3>
-<ul>
-  <% @slideshows.each do |slideshow| %>
-  <li> <%= link_to slideshow.name, slideshow %> </li>
-  <% end %>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Slideshow</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @slideshows.each do |slideshow| %>
+    <tr>
+      <td><%= link_to slideshow.name, slideshow %></td>
+      <td>
+        <%= link_to "edit", edit_slideshow_path(slideshow) %>
+        <%= link_to "cast", slideshow_path(slideshow) %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
 <% end %>
 
 
