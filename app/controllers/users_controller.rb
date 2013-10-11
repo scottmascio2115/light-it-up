@@ -3,9 +3,9 @@ class UsersController < ApplicationController
   skip_before_filter :require_login, :only => [:new, :create]
 
   def create
-    @user = User.new(user_params)
-    if @user.save
-      session[:user_id] = @user.id
+    user = User.new(user_params)
+    if user.save
+      session[:user_id] = user.id
       redirect_to user_path(current_user)
     else
       render :new
@@ -17,15 +17,16 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
-    if @user.id == session[:user_id]
-      @user.destroy
-      # current_user.destroy
-      session.clear
-
-    end
+    current_user.destroy
+    session.clear
+    flash[:notice] = "Your user account has been deleted."
     redirect_to root_url
 
+  end
+
+  def edit
+    # @user = User.find(params[:id])
+    render :edit
   end
 
   def update
@@ -33,20 +34,15 @@ class UsersController < ApplicationController
     redirect_to user_path(current_user)
   end
 
-  def edit
-    @user = User.find(params[:id])
-    render :edit
-  end
-
   def show
-    @user = User.find(params[:id])
-    if @user
+    user = User.find(params[:id])
+    if user
       if params[:id].to_i != current_user.id
         flash[:notice] = "You can view your profile only."
         redirect_to user_path(current_user)
       end
-      @slideshows = @user.slideshows
-      @shared_slideshows = Slideshow.where("shared = true AND user_id NOT IN ( #{@user.id} )")
+      # will revisit the instance variable here
+      @shared_slideshows = Slideshow.where("shared = true AND user_id NOT IN ( #{current_user.id} )")
     else
       flash[:notice] = "You need to be logged in to view your profile" #NOT RETURNING THIS NOTICE TO USER
       redirect_to login
