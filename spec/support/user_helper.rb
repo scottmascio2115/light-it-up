@@ -8,9 +8,16 @@ module UserHelper
     fill_in 'password', with: 'password'
     click_button 'Log in'
   end
+
+  # def edit_user
+  #   @user = User.find_by_email("ex@fake.com")
+  #   visit edit_user_path(@user)
+  #   fill_in 'email', with: 'editemail@fake.com'
+  #   click_button 'Save User'
+  # end
 end
 
 
 # to use launchy put
-#save_and_open_page
+# save_and_open_page
 # into a route you want to inspect see above for example
