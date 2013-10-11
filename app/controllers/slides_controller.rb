@@ -32,6 +32,7 @@ class SlidesController < ApplicationController
     @slide = Slide.find(params[:id])
     if @slide.creator_id == current_user.id
       @slide
+      @element_types = ElementType.all
     else
       flash[:error] = "Permission Denied"
     end

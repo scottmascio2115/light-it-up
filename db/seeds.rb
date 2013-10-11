@@ -40,3 +40,7 @@ element_types = [ {name: "Title",
                    before_tag: "<img>",
                    after_tag: "</img>"}
                 ]
+
+element_types.each do |type|
+  ElementType.create(type)
+end
