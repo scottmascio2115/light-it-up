@@ -1,6 +1,14 @@
 <h1><%= @slideshow.name %> </h1>
 
+<%= link_to 'Add new slide', new_slide_path %>
+
 <div class="slidshow" style="width: <%= @slideshow.px_width %>px; height: <%= @slideshow.px_height %>px">
-
-
 </div>
+
+<div class="slides">
+  <% @slideshow.slides.each do |slide| %>
+    <div><%= slide.title %></div>
+  <% end %>
+</div>
+
+
