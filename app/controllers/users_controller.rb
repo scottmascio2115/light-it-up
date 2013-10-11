@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      redirect_to user_path(current_user)
     else
       render :new
     end
@@ -20,7 +20,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.id == session[:user_id]
       @user.destroy
+      # current_user.destroy
       session.clear
+
     end
     redirect_to root_url
 

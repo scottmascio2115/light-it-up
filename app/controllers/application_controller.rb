@@ -9,16 +9,21 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   
-  before_filter :require_login #, :id_check
+  before_filter :require_login
 
   def require_login
-  # p current_user
-    redirect_to root_url unless current_user 
+    redirect_to root_url unless current_user
   end
 
-  # def id_check
-  #   redirect_to user_path(current_user.id) unless current_user.id == params[:id]
-  # end
+  helper_method :id_check
+
+  def id_check(id)
+    if current_user.id == id
+      true
+    else
+      false
+    end
+  end
   
 
 end
