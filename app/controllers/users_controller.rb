@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
   def update
     current_user.update_attributes!(email: user_update[:email])
-    redirect_to user_path(@user)
+    redirect_to user_path(current_user)
   end
 
   def edit
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
         redirect_to user_path(current_user)
       end
       @slideshows = @user.slideshows
-      @shared_slideshows = Slideshow.where("shared = true AND user_id NOT IN ( #{@user.id} )")  
+      @shared_slideshows = Slideshow.where("shared = true AND user_id NOT IN ( #{@user.id} )")
     else
       flash[:notice] = "You need to be logged in to view your profile" #NOT RETURNING THIS NOTICE TO USER
       redirect_to login
