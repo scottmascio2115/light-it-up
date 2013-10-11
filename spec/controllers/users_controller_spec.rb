@@ -2,7 +2,7 @@ require 'spec_helper'
 describe UsersController do
 
   before(:each) do
-    @user = User.create(:email => "scott@gmail.com",:password => "test", :password_confirmation => "test" )
+    @user = User.create(:email => "scott1@gmail.com",:password => "password", :password_confirmation => "password" )
 
     controller.stub(:current_user).and_return(@user)
 
@@ -15,21 +15,21 @@ describe UsersController do
   end
 
    it "should be able to create a user" do
-    expect { post 'create' , :user => {"email" => "scott@gmail.com",
-                                       "password" => "test",
-                                       "password_confirmation" => "test" } }.to change(User, :count).by(1)
+    expect { post 'create' , :user => {"email" => "scott2@gmail.com",
+                                       "password" => "password",
+                                       "password_confirmation" => "password" } }.to change(User, :count).by(1)
      response.should redirect_to(user_path(session[:user_id]))
    end
 
    it "should set session id" do
-     expect { post 'create' , :user => {"email" => "scott@gmail.com",
-                                       "password" => "test",
-                                       "password_confirmation" => "test" } }.to change(User, :count).by(1)
+     expect { post 'create' , :user => {"email" => "vinnie@gmail.com",
+                                       "password" => "password",
+                                       "password_confirmation" => "password" } }.to change(User, :count).by(1)
      session[:user_id].should eq User.last.id
    end
 
    it "should not be able to create a user without matching passwords" do
-     expect { post 'create' , :user => {"email" => "scott@gmail.com",
+     expect { post 'create' , :user => {"email" => "scott3@gmail.com",
                                        "password" => "test",
                                        "password_confirmation" => "not test" } }.to_not change(User, :count).by(1)
       session[:user_id].should eq (nil)
@@ -45,7 +45,7 @@ describe UsersController do
    end
 
     it "should not be able to create a user without password" do
-      expect { post 'create' , :user => {"email" => "scott@gmail.com",
+      expect { post 'create' , :user => {"email" => "scott4@gmail.com",
                                          "password" => "",
                                          "password_confirmation" => "not test" } }.to_not change(User, :count).by(1)
       session[:user_id].should eq (nil)
@@ -85,9 +85,9 @@ end
   describe '#update' do
 
     it 'should update email' do
-      patch :update, id: @user, user: {:email => "test@test.com"}
+      patch :update, id: @user, user: {:email => "test@gmail.com"}
 
-      @user.reload.email.should == "test@test.com"
+      @user.reload.email.should eq "test@gmail.com"
     end
   end
 
