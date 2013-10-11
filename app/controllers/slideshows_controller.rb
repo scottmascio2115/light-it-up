@@ -22,6 +22,7 @@ class SlideshowsController < ApplicationController
     @slideshow = Slideshow.find(params[:id])
     if @slideshow.shared || @slideshow.user_id == current_user.id
       @slideshow
+
     else
       flash[:error] = "Permission Denied"
     end
@@ -29,10 +30,17 @@ class SlideshowsController < ApplicationController
 
   def show
     @slideshow = Slideshow.find(params[:id])
+    p "===================================================="
     if @slideshow.shared || @slideshow.user_id == current_user.id
+      p "===================================================="
+      session[:slideshow_id] = @slideshow.id
+      p session[:slideshow_id]
+
+      p @slideshow
       @slideshow
     else
       flash[:error] = "Permission Denied"
+      redirect_to slideshows_path
     end
   end
 
