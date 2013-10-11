@@ -15,7 +15,6 @@ describe "User Profile" do
   describe "Profile functionality" do
     before(:each) do
       visit user_path(User.find_by_email("ex@fake.com"))
-      save_and_open_page
     end
 
     it "Can get to new slideshow page" do
