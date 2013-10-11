@@ -1,4 +1,6 @@
 <h1>Welcome to CromeCast Hack</h1>
-
-
+<h3>Shared Slideshows</h3>
+<% @front_page = "Yessssss...." %> 
+<% @shared_or_not = Slideshow.where(shared: true) %>
+<%= render 'users/table' %>
 <%= link_to 'Sign Up', signup_path %>
