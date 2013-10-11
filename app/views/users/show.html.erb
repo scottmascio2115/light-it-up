@@ -1,8 +1,8 @@
-<h3><%= @user.email.capitalize %> Your Page</h3>
+<h3><%= current_user.email.capitalize %> Your Page</h3>
 
-<% unless @slideshows == nil %>
+<% unless current_user.slideshows == nil %>
 <h3>Your slideshows</h3>
-<% @shared_or_not = @slideshows %> 
+<% @shared_or_not = current_user.slideshows %> 
 <%= render 'table' %>
 <% end %>
 
@@ -18,7 +18,7 @@
 <%= link_to 'Create new slideshow', new_slideshow_path %>
 
 
-<%= link_to "Update Account Info", edit_user_path(@user) %>
+<%= link_to "Update Account Info", edit_user_path(current_user) %>
 
  <%= link_to 'Delete Account', user_path, method: :delete, data: { confirm: 'Are you sure you want delete your account?' } %>
 
