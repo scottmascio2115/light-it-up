@@ -39,6 +39,8 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'travis-lint'
 
+gem 'coveralls', require: false
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
