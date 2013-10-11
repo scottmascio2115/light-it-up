@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_slideshow
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   
   before_filter :require_login
@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   end
   
   def current_slideshow
-    @current_slideshow = Slideshow.find(session[:slideshow_id]) if session[:slideshow_id]
+    current_slideshow = Slideshow.find(session[:slideshow_id]) if session[:slideshow_id]
   end
 
 end
