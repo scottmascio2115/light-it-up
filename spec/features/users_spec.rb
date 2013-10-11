@@ -2,6 +2,7 @@ require 'spec_helper'
 include UserHelper
 
 describe "User Profile" do
+
   before(:each) do
     sign_up
   end
@@ -27,6 +28,16 @@ describe "User Profile" do
       page.should have_content 'Welcome to CromeCast Hack'
     end
 
+    it "Can get to update page" do
+      click_link 'Update Account Info'
+      page.should have_content 'Edit Account info.'
+    end
 
+    it "It has link to Delete account" do
+      click_link 'Delete Account'
+      page.should have_content 'Welcome to CromeCast Hack'
+    end
   end
 end
+
+
