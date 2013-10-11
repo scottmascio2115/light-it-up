@@ -1,6 +1,6 @@
 <h3><%= @user.email.capitalize %> Your Page</h3>
 
-<% if @slideshows.any? %>
+<% unless @slideshows == nil %>
 <h3>Your slideshows</h3>
 <ul>
   <% @slideshows.each do |slideshow| %>
