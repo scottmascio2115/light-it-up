@@ -19,6 +19,13 @@ describe "Edit User Page" do
     page.should have_content 'Welcome to CromeCast Hack'
   end
 
+  it "Should edit the user info" do
+    visit edit_user_path(User.find_by_email("ex@fake.com"))
+    fill_in 'Email', with: 'editemail@fake.com'
+    click_button 'Save User'
+    page.should have_content "editemail@fake.com"
+  end
+
 
 
 end
