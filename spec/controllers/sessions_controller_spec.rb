@@ -23,10 +23,6 @@ describe SessionsController do
       expect(response.status).to eq 302
     end
 
-    after do
-      User.all.each { |user| user.destroy }
-    end
-
   end
 
   describe '#destroy' do
@@ -38,10 +34,6 @@ describe SessionsController do
     it "clears the session at logout" do
       delete :destroy
       expect(session[:user_id]).to eq nil
-    end
-
-    after do
-      User.all.each { |user| user.destroy }
     end
 
   end

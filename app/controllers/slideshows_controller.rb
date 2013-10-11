@@ -19,6 +19,12 @@ class SlideshowsController < ApplicationController
   end
 
   def edit
+    @slideshow = Slideshow.find(params[:id])
+    if @slideshow.shared || @slideshow.user_id == current_user.id
+      @slideshow
+    else
+      flash[:error] = "Permission Denied"
+    end
   end
 
   def show
@@ -31,7 +37,14 @@ class SlideshowsController < ApplicationController
   end
 
   def update
-
+    @slideshow = Slideshow.find(params[:id])
+    if @slideshow.shared || @slideshow.user_id == current_user.id
+      @slideshow.update(update_params)
+      redirect_to @slideshow
+    else
+      flash[:error] = "Permission Denied"
+      render :edit
+    end
   end
 
   def destroy
@@ -40,6 +53,10 @@ class SlideshowsController < ApplicationController
   private
 
   def create_params
+    params.require(:slideshow).permit(:name, :shared)
+  end
+
+  def update_params
     params.require(:slideshow).permit(:name, :shared)
   end
 
