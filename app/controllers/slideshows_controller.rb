@@ -5,7 +5,13 @@ class SlideshowsController < ApplicationController
   end
 
   def create
-
+    @slideshow = Slideshow.new(create_params)
+    @slideshow.user = current_user
+    if @slideshow.save
+      redirect_to slideshow_path(@slideshow)
+    else
+      render :new
+    end
   end
 
   def new
@@ -29,6 +35,12 @@ class SlideshowsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def create_params
+    params.require(:slideshow).permit(:name, :shared)
   end
 
 end
