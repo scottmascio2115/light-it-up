@@ -2,13 +2,17 @@
 
 <%= link_to 'Add new slide', new_slide_path %>
 
+
+<div class="slides">
+<h4>Slides</h4>
+  <% @slideshow.slides.each do |slide| %>
+    <%= link_to slide.title , slide_path(slide) %>
+
+  <% end %>
+</div>
+
 <div class="slidshow" style="width: <%= @slideshow.px_width %>px; height: <%= @slideshow.px_height %>px">
 </div>
 
-<div class="slides">
-  <% @slideshow.slides.each do |slide| %>
-    <div><%= slide.title %></div>
-  <% end %>
-</div>
 
 
