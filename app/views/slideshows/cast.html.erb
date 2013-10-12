@@ -1,6 +1,19 @@
-<% @slideshow.slides.each_with_index do |slide,index| %>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LightItUp</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
 
-  <div id="slide" class="slide" style="width: <%= @slideshow.px_width %>px; height: <%= @slideshow.px_height %>px">
+<% @slideshow.slides.each_with_index do |slide,index| %>
+  <% if index == 0 %>
+  <div id="slide" class="active <%= index + 1 %>" style="width: <%= @slideshow.px_width %>px; height: <%= @slideshow.px_height %>px">
+  <% else %>
+  <div id="slide" class="hidden <%= index + 1 %>" style="width: <%= @slideshow.px_width %>px; height: <%= @slideshow.px_height %>px">
+  <% end %>
     <div class="slide-object draggable"></div>
     <div class="slide-object draggable"></div>
     <div class="slide-object draggable"></div>
@@ -8,3 +21,9 @@
   </div>
 
 <% end %>
+
+<%= flash[:notice] %>
+<%= yield %>
+
+</body>
+</html>

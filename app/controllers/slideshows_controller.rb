@@ -47,7 +47,7 @@ class SlideshowsController < ApplicationController
   def cast
     @slideshow = Slideshow.find(params[:format])
     if @slideshow.slides.length > 0
-      render :cast
+      render :cast, layout: false
     else
       redirect_to user_path(current_user)
     end
