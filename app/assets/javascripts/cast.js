@@ -3,7 +3,6 @@ $(document).ready(function() {
   $('.hidden').hide();
  
   $(document).keyup(function(e) {
-    // console.log('before');
     if (e.keyCode == 37) {
       console.log('keyup');
       $active = $('.active').next();
@@ -13,7 +12,7 @@ $(document).ready(function() {
       $active.removeClass('hidden');
       $active.prev().removeClass('active');
       $active.prev().addClass('hidden');
-      // $active.prev().hide();
+      $active.prev().appendTo('#slide_list');
     }
   });
  
