@@ -1,8 +1,10 @@
+<% @slideshow.slides.each_with_index do |slide,index| %>
 
+  <div id="slide" class="slide" style="width: <%= @slideshow.px_width %>px; height: <%= @slideshow.px_height %>px">
+    <div class="slide-object draggable"></div>
+    <div class="slide-object draggable"></div>
+    <div class="slide-object draggable"></div>
+    <div class="slide-object draggable"></div>
+  </div>
 
-<div id="slide" class="slide" style="width: <%= @slide.slideshow.px_width %>px; height: <%= @slide.slideshow.px_height %>px">
-  <div class="slide-object draggable"></div>
-  <div class="slide-object draggable"></div>
-  <div class="slide-object draggable"></div>
-  <div class="slide-object draggable"></div>
-</div>
+<% end %>
