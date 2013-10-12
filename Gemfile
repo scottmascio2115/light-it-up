@@ -55,4 +55,6 @@ group :test, :development do
   gem 'faker'
   gem 'capybara'
   gem 'launchy'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
 end

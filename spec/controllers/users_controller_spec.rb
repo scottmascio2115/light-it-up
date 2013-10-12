@@ -71,6 +71,8 @@ end
     it "should let the user delete their own account" do
 
       delete :destroy, :id => @user.id
+      session[:user_id].should eq (nil)
+      response.should redirect_to(root_path)
     end
   end
 
