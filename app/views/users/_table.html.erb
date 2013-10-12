@@ -15,7 +15,7 @@
       <td>
         <%= link_to "edit_settings", edit_slideshow_path(slideshow) %>
 
-        <%= link_to "cast slideshow", cast_path(slideshow), method: :post, data: { id: slideshow.id } %>
+        <%= link_to "cast slideshow", cast_path(slideshow) %>
 
         <%= link_to "delete slideshow", slideshow_path(slideshow), method: :delete, data: { confirm: 'Are you sure?' } %>
       </td>

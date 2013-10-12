@@ -30,6 +30,7 @@ class SlidesController < ApplicationController
 
   def show
     @slide = Slide.find(params[:id])
+    @slideshow = Slideshow.find(@slide.slideshow_id)
     if @slide.creator_id == current_user.id
       @slide
       @element_types = ElementType.all

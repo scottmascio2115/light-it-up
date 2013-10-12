@@ -10,6 +10,10 @@
     <% end %>
   </div>
 
+  <script type="text/JavaScript">
+    setTimeout('location.href = "/slideshows/<%=  %>";',5000);
+  </script>
+
   <div id="slide" class="slide" style="width: <%= @slide.slideshow.px_width %>px; height: <%= @slide.slideshow.px_height %>px">
     <div class="slide-object draggable"></div>
     <div class="slide-object draggable"></div>

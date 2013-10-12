@@ -45,9 +45,9 @@ class SlideshowsController < ApplicationController
   end
 
   def cast
-    @slides = Slideshow.find(params[:format]).slides
-    if @slides.length > 0
-      redirect_to slide_path(@slides.first) + "#slide"
+    @slideshow = Slideshow.find(params[:format])
+    if @slideshow.slides.length > 0
+      redirect_to cast_path(@slideshow)
     else
       redirect_to user_path(current_user)
     end
