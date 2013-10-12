@@ -17,4 +17,14 @@
   <p>
     <%= f.submit %>
   </p>
+
 <% end %>
+
+<% if @errors %>
+  <ul>
+  <% @errors.full_messages.each do |error| %>
+    <li><%= error %></li>  
+  <% end %>
+  </ul>
+<% end %>
+ 

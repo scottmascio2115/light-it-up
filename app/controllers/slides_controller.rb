@@ -30,6 +30,7 @@ class SlidesController < ApplicationController
 
   def show
     @slide = Slide.find(params[:id])
+    @slideshow = Slideshow.find(@slide.slideshow_id)
     if @slide.creator_id == current_user.id
       @slide
       @element_types = ElementType.all
@@ -47,9 +48,9 @@ class SlidesController < ApplicationController
   end
 
   def destroy
+    slide = Slide.find(params[:id])
     slideshow_id = slide.slideshow_id
     @slideshow = Slideshow.find(slideshow_id)
-    slide = Slide.find(params[:id])
     slide.destroy
 
     redirect_to slideshow_path(@slideshow)

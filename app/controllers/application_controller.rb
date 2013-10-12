@@ -5,18 +5,16 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   helper_method :current_slideshow
+  helper_method :id_check
+  before_filter :require_login
 
   def current_user
     current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
-  
-  before_filter :require_login
 
   def require_login
     redirect_to root_url unless current_user
   end
-
-  helper_method :id_check
 
   def id_check(id)
     if current_user.id == id
