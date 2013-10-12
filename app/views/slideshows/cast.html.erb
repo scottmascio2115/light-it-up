@@ -10,9 +10,9 @@
 
 <% @slideshow.slides.each_with_index do |slide,index| %>
   <% if index == 0 %>
-  <div id="slide" class="active <%= index + 1 %>" style="width: <%= @slideshow.px_width %>px; height: <%= @slideshow.px_height %>px">
+  <div id="slide<%= index + 1 %>" class="active" style="width: <%= @slideshow.px_width %>px; height: <%= @slideshow.px_height %>px">
   <% else %>
-  <div id="slide" class="hidden <%= index + 1 %>" style="width: <%= @slideshow.px_width %>px; height: <%= @slideshow.px_height %>px">
+  <div id="slide<%= index + 1 %>" class="hidden" style="width: <%= @slideshow.px_width %>px; height: <%= @slideshow.px_height %>px">
   <% end %>
     <div class="slide-object draggable"></div>
     <div class="slide-object draggable"></div>
