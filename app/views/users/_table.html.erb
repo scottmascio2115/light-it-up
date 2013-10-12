@@ -14,7 +14,11 @@
       <% unless @front_page %>
       <td>
         <%= link_to "edit_settings", edit_slideshow_path(slideshow) %>
-        <%= link_to "cast", slideshow_path(slideshow) %>
+        <% if slideshow.slides.first %>
+          <a href="/slides/<%= slideshow.slides.first.id %>#slide">cast</a>
+        <% else %>
+          <%= link_to "cast", slide_path(slideshow.slides.first) %>
+        <% end %>
         <%= link_to "delete slideshow", slideshow_path(slideshow), method: :delete, data: { confirm: 'Are you sure?' } %>
       </td>
       <% end %>
