@@ -44,6 +44,15 @@ class SlideshowsController < ApplicationController
     end
   end
 
+  def cast
+    @slideshow = Slideshow.find(params[:format])
+    if @slideshow.slides.length > 0
+      render :cast, layout: false
+    else
+      redirect_to user_path(current_user)
+    end
+  end
+
   def update
     @slideshow = Slideshow.find(params[:id])
     if @slideshow.shared || @slideshow.user_id == current_user.id

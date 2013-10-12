@@ -13,7 +13,7 @@ LightItUp::Application.routes.draw do
   get 'signup' => 'users#new'
   get 'profile/:id' => 'users#show'
 
-
+  post 'cast' => 'slideshows#cast'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
