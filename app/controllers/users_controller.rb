@@ -8,6 +8,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to user_path(current_user)
     else
+      @errors = user.errors
       render :new
     end
   end
