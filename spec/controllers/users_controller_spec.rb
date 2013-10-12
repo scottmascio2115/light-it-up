@@ -18,7 +18,7 @@ describe UsersController do
     expect { post 'create' , :user => {"email" => "scott2@gmail.com",
                                        "password" => "password",
                                        "password_confirmation" => "password" } }.to change(User, :count).by(1)
-     response.should redirect_to(user_path(session[:user_id]))
+     response.should redirect_to(user_path(@user))
    end
 
    it "should set session id" do
@@ -35,6 +35,7 @@ describe UsersController do
       session[:user_id].should eq (nil)
       response.should render_template(:new)
    end
+
 
    it "should not be able to create a user without email" do
       expect { post 'create' , :user => {"email" => "",
@@ -70,6 +71,8 @@ end
     it "should let the user delete their own account" do
 
       delete :destroy, :id => @user.id
+      session[:user_id].should eq (nil)
+      response.should redirect_to(root_path)
     end
   end
 

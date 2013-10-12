@@ -1,1 +1,20 @@
-<h1><%= @slide.title %> </h1>
+<div class="main">
+
+  <div class="slide-settings">
+    <h1><%= @slide.slideshow.name %></h1>
+    <h3><%= @slide.title %> </h3>
+
+    <h3>Add a element</h3>
+    <% @element_types.each do |type| %>
+      <%= type.name %>
+    <% end %>
+  </div>
+
+  <div class="slide" style="width: <%= @slide.slideshow.px_width %>px; height: <%= @slide.slideshow.px_height %>px">
+    <div class="slide-object draggable"></div>
+    <div class="slide-object draggable"></div>
+    <div class="slide-object draggable"></div>
+    <div class="slide-object draggable"></div>
+  </div>
+
+</div>
